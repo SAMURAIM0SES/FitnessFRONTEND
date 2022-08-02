@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import{Login,Register} from './'
+import{Login,Register,NavBar} from './'
+
 
 
 
@@ -12,8 +13,9 @@ const Home = () => {
 
 return (
     <>
+    <NavBar />
     <Routes>
-        <Route path='/' element={<div className="welcome">Welcome to Fitness Tracker!</div>}></Route>
+        <Route path='/Home' element={<div className="welcome">Welcome to Fitness Tracker!</div>}></Route>
         
         <Route exact
           path="/Login"

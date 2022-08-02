@@ -1,4 +1,4 @@
-export const apiURL = "https://fitnesstrac-kr.herokuapp.com"
+export const apiURL = "https://fitnesstrac-kr.herokuapp.com/api"
 
 
 
@@ -15,7 +15,7 @@ export const apiURL = "https://fitnesstrac-kr.herokuapp.com"
 
 export const loginUser = async (username, password) => {
     try {
-      const response = await fetch(`${apiURL}/login`, {
+      const response = await fetch(`${apiURL}/users/Login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +38,8 @@ export const loginUser = async (username, password) => {
   
   
   export const registerUser = async (username,password) => {
-    const response = await fetch(`${apiURL}/users/register`, {
+   try{
+    const response = await fetch(`${apiURL}/users/Register`, {
       method:"POST",
       headers: {
         "Content-Type" : "application/json"
@@ -54,4 +55,6 @@ export const loginUser = async (username, password) => {
     console.log(result,"i'm from api index!!!")
     return result
     
-  }
+  }catch(error){
+    console.error(error)
+  }}

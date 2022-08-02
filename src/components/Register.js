@@ -4,6 +4,7 @@ import { registerUser } from "../api";
 
 
 
+
 function Register ({username, setUsername, password, setPassword}) {
     const navigate = useNavigate();
 
