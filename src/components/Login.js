@@ -20,10 +20,10 @@ async function handleSubmit(event) {
   
     event.preventDefault()
     const result = await loginUser(username,password)
-    localStorage.setItem("token",result.data.token);
+    localStorage.setItem("token",result.token);
     
 
- navigate("/Home")
+ navigate("/")
 
 
 }

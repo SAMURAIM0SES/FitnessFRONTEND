@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import{Login,Register,NavBar} from './'
+import{Login,Register,NavBar,Activities,Routines,MyRoutines} from './'
 
 
 
@@ -15,7 +15,7 @@ return (
     <>
     <NavBar />
     <Routes>
-        <Route path='/Home' element={<div className="welcome">Welcome to Fitness Tracker!</div>}></Route>
+        <Route exact path='/' element={<div className="welcome">Welcome to Fitness Tracker!</div>}></Route>
         
         <Route exact
           path="/Login"
@@ -32,7 +32,7 @@ return (
         ></Route>
         
         <Route
-          path="/Register"
+         exact path="/register"
           element={
             <Register
               username={username}
@@ -42,7 +42,14 @@ return (
             />
           }
         ></Route>
-        
+        <Route 
+        exact path ="/activities"
+        element= {
+          <Activities
+
+
+          />
+        }></Route>
     </Routes>
     </>
 )

@@ -21,13 +21,14 @@ export const loginUser = async (username, password) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          user: {
+          
             username: username,
             password: password,
-          },
+          
         }),
       });
       const result = await response.json()
+      console.log(result, "look at this result for token")
       return result
       
     } catch (error) {
@@ -39,16 +40,16 @@ export const loginUser = async (username, password) => {
   
   export const registerUser = async (username,password) => {
    try{
-    const response = await fetch(`${apiURL}/users/Register`, {
+    const response = await fetch(`${apiURL}/users/register`, {
       method:"POST",
       headers: {
         "Content-Type" : "application/json"
       },
       body: JSON.stringify({
-        user: {
+        
           username: username,
           password: password
-        }
+        
       })
     })
     const result = await response.json()
@@ -58,3 +59,24 @@ export const loginUser = async (username, password) => {
   }catch(error){
     console.error(error)
   }}
+
+  export async function getActivities() {
+    try {
+      const response = await fetch(`${apiURL}/activities`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+                              id: id,
+                              title: title,
+                              description: description
+         })
+      })
+      const result = await response.json();
+      console.log(result);
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  }
