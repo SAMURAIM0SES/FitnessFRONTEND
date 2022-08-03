@@ -71,23 +71,27 @@ export const loginUser = async (username, password) => {
     }
   }
 
-  // export async function getActivities() {
-  //   try {
-  //     const response = await fetch(`${apiURL}/activities`, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify({ 
-  //                             id: id,
-  //                             title: title,
-  //                             description: description
-  //        })
-  //     })
-  //     const result = await response.json();
-  //     console.log(result);
-  //     return result;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  export async function createNewActivity(activityObj, token) {
+    console.log(activityObj, "I'm a activityObj")
+    try {
+    const response = await fetch(`${apiURL}/activities`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        
+          name: activityObj.name,
+          description: activityObj.description,
+        
+        
+      }),
+    }); 
+    const result = await response.json();
+    console.log(result, "line 92");
+    return result;
+  
+  }catch(error){console.error(error)}
+  }
+  
