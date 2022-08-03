@@ -1,52 +1,27 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { getActivities } from "../api";
 
-
-
-const AllActivities = () => {
- try{
-    const {activities, setActivities} = useState([])
-    const token = localStorage.getItem("token")
-    const result = getActivities()
-        setActivities(result);
-    
-  }catch(error){
-    console.log(error, "woooooah something broke on line 15")
-  }
-  
-  useEffect(() => {
-    getActivities()
-}, [])
-  
-  // console.log(token);
-
-
+const AllActivities = ({ activities }) => {
+  console.log(activities, " look at line 5")
   return (
     <>
       <h1>Activities</h1>
-      
-        
-        
-           <div key={activity.id} className="Activities">
-          <h2>{result.activity.name}</h2>
-          <p>{activity.description}</p>
-          
-          
-          
-        </div>
-        
-    
-        
+
+      {activities && activities.length > 0
+        ? activities.map((activity) => {
+          console.log(activity, " look at line 13")
+            return (
+              <div key={`activity holder${activity.id}`} className="Activities">
+                <h2>{activity.name}</h2>
+                <p>{activity.description}</p>
+              </div>
+            );
+          })
+        : null}
     </>
   );
 };
-
-
-
-
-
-
 
 // function AllActivities (){
 //   const [activities, activitiesArray, setActivitiesArray]=useState([])
@@ -60,7 +35,7 @@ const AllActivities = () => {
 //   AllActivities()
 // },[])
 // return (
-    
+
 //   <div className="activities">
 
 //   (<>
@@ -77,17 +52,14 @@ const AllActivities = () => {
 //           <h3>{activities.name}</h3>
 //           <h4>{activities.id}</h4>
 //           <p>{activities.description}</p>
-          
+
 //         </div>
 //       );
 //     )
 //     </>
-    
+
 //   </div>
 // );
 // };
 
-
-
-
-export default AllActivities
+export default AllActivities;
