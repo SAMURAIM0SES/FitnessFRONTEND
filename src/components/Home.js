@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import{Login,Register,NavBar,Activities,Routines,MyRoutines} from './'
+import{Login,Register,NavBar,AllActivities,Routines,MyRoutines} from './'
 
 
 
@@ -45,7 +45,7 @@ return (
         <Route 
         exact path ="/activities"
         element= {
-          <Activities
+          <AllActivities
 
 
           />
