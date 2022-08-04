@@ -71,20 +71,23 @@ export const loginUser = async (username, password) => {
     }
   }
 
-  export async function createNewActivity(activityObj, token) {
-    console.log(activityObj, "I'm a activityObj")
+  export async function createNewActivity(name, description, token) {
+    console.log(token, name, description, "I'M HERE")
     try {
+
     const response = await fetch(`${apiURL}/activities`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
+
       },
       body: JSON.stringify({
         
-          name: activityObj.name,
-          description: activityObj.description,
-        
+          name: name,
+          description: description,
+         
+       
         
       }),
     }); 
