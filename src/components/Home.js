@@ -17,6 +17,7 @@ const Home = () => {
     const [goal, setGoal] = useState("")
     const [routines, setRoutines] = useState([])
     
+    
 
     async function fetchPublicRoutines(){
       try {
@@ -113,6 +114,8 @@ return (
           <PublicRoutines
           routines = {routines}
           setRoutines = {setRoutines}
+          activities = {activities}
+          setActivities = {setActivities}
         />
         }></Route>
     </Routes>
