@@ -62,17 +62,7 @@ export const loginUser = async (username, password) => {
 
   export async function getActivities() {
     try {
-      const response = await fetch(`${apiURL}/activities`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ 
-                              id: id,
-                              title: title,
-                              description: description
-         })
-      })
+      const response = await fetch(`${apiURL}/Activities`);
       const result = await response.json();
       console.log(result);
       return result;
@@ -80,3 +70,31 @@ export const loginUser = async (username, password) => {
       console.log(error);
     }
   }
+
+  export async function createNewActivity(name, description, token) {
+    console.log(token, name, description, "I'M HERE")
+    try {
+
+    const response = await fetch(`${apiURL}/activities`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+
+      },
+      body: JSON.stringify({
+        
+          name: name,
+          description: description,
+         
+       
+        
+      }),
+    }); 
+    const result = await response.json();
+    console.log(result, "line 92");
+    return result;
+  
+  }catch(error){console.error(error)}
+  }
+  

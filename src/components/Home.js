@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import{Login,Register,NavBar,Activities,Routines,MyRoutines} from './'
+import{Login,Register,NavBar,AllActivities,AddNewActivity,Routines,MyRoutines} from './'
+import { getActivities} from "../api";
+
 
 
 
@@ -9,6 +11,25 @@ const Home = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [token,setToken] = useState("");
+    const [activities, setActivities] = useState([])
+    const [name, setName] = useState("")
+    const [description, setDescription] = useState("")
+    
+
+async function fetchAllActivities(){
+  try {
+  const result= await getActivities()
+  setActivities(result)
+} catch (error) {
+  console.error(error)
+}
+
+}
+
+useEffect (()=>{
+  fetchAllActivities()
+},[])
+
 
 
 return (
@@ -45,11 +66,27 @@ return (
         <Route 
         exact path ="/activities"
         element= {
-          <Activities
-
-
+        
+          <AllActivities
+          
+          activities = {activities}
+          setActivities = {setActivities}
           />
         }></Route>
+
+<Route 
+        exact path ="/activities"
+        element= {
+        
+          <AddNewActivity
+          
+          name = {name}
+          description = {description}
+          setName = {setName}
+          setDescription = {setDescription}
+          />
+        }></Route>
+        
     </Routes>
     </>
 )
