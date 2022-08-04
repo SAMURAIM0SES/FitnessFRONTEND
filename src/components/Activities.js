@@ -1,41 +1,29 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import { getActivities } from "../api";
+import { createNewActivity} from "../api";
+import AddNewActivity from "./AddNewActivity";
 
-
-
-const allActivities = () => {
-  const token = localStorage.getItem("token")
-  useEffect(() => {
-    getActivity().then((result) => {
-      setActivities(result.activities);
-    });
-  }, []);
-  
-  // console.log(token);
-
-
+const AllActivities = ({ activities }) => {
+  console.log(activities, " look at line 5")
   return (
     <>
       <h1>Activities</h1>
-      {activities.map((activity) => {
-        let activityId = activity._id;
-        return(
-           <div key={activityId} className="Activities">
-          <h2>{activity.name}</h2>
-          <p>{activity.description}</p>
-          
-          
-          
-        </div>
-        )
-       
-        })}
+<AddNewActivity/>
+      {activities && activities.length > 0
+        ? activities.map((activity) => {
+          console.log(activity, " look at line 13")
+            return (
+              <div key={`activity holder${activity.id}`} className="Activities">
+                <h2>{activity.name}</h2>
+                <p>{activity.description}</p>
+              </div>
+            );
+          })
+        : null}
     </>
   );
 };
 
 
 
-
-export default allActivities
+export default AllActivities;
