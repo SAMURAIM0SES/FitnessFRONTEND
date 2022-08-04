@@ -102,7 +102,7 @@ export const loginUser = async (username, password) => {
     try {
       const response = await fetch(`${apiURL}/Routines`);
       const result = await response.json();
-      console.log(result);
+      console.log(result, "should be routines");
       return result;
     } catch (error) {
       console.log(error);

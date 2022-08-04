@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import{Login,Register,NavBar,AllActivities,AddNewActivity,PublicRoutines,Routines,MyRoutines} from './'
-import { getActivities} from "../api";
+import { getActivities,getPublicRoutines} from "../api";
 
 
 
@@ -15,9 +15,27 @@ const Home = () => {
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [goal, setGoal] = useState("")
+    const [routines, setRoutines] = useState([])
     
 
-async function fetchAllActivities(){
+    async function fetchPublicRoutines(){
+      try {
+      const result= await getPublicRoutines()
+      setRoutines(result)
+    } catch (error) {
+      console.error(error)
+    }
+    
+    }
+    
+    useEffect (()=>{
+      fetchPublicRoutines()
+    },[])
+
+
+
+
+    async function fetchAllActivities(){
   try {
   const result= await getActivities()
   setActivities(result)
@@ -93,10 +111,8 @@ return (
         element= {
         
           <PublicRoutines
-          name = {name}
-          goal = {goal}
-          setName = {setName}
-          setGoal = {setGoal}
+          routines = {routines}
+          setRoutines = {setRoutines}
         />
         }></Route>
     </Routes>
