@@ -98,3 +98,13 @@ export const loginUser = async (username, password) => {
   }catch(error){console.error(error)}
   }
   
+  export async function getPublicRoutines() {
+    try {
+      const response = await fetch(`${apiURL}/Routines`);
+      const result = await response.json();
+      console.log(result);
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  }
