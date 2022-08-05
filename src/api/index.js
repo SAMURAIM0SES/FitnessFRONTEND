@@ -110,4 +110,36 @@ export const loginUser = async (username, password) => {
   }
 
 
+  export const updateActivity = async (name, description, token, id) => {
+    try{
+
+        const response = await fetch(`${apiURL}/Activities/${id}`, 
+            {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    
+                    name: name,    
+                    description: description,
+                   
+                    
+                })
+            })    
+        const result = await response.json();
+        return result;
+    }
+
+    catch (error){   
+    console.error(error);
+    }
+}
+   
+      
+    
+  
+
+
   

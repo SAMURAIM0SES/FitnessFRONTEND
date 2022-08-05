@@ -20,27 +20,27 @@ form{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 30px;
+    margin: 20px;
 }
 input{
     padding: 9px;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 15px;
     margin: 5px;
     background-color: wheat;
     font-style: italic;
    
 }
 .btn{
-    padding: 9px;
+    padding: 5px;
     border-radius: 10px;
-    font-size: 20px;
-    margin: 5px;
+    font-size: 15px;
+    margin: 2px;
     background-color: chocolate;
 }
 
 label{
-    font-size: 25px;
+    font-size: 15px;
 }
 
 .activities{
@@ -74,4 +74,8 @@ font-size: 40px;
     margin: 5px;
     background-color: chocolate;    
 
+}
+
+h2{
+    text-align: center;
 }

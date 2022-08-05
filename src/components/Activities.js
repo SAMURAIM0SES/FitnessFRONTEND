@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import { createNewActivity} from "../api";
+import { createNewActivity, updateActivity} from "../api";
 import AddNewActivity from "./AddNewActivity";
+import EditActivity from "./EditActivity";
 
 const AllActivities = ({ activities }) => {
   
@@ -16,6 +17,7 @@ const AllActivities = ({ activities }) => {
               <div key={`activity holder${activity.id}`} className="Activities">
                 <h2>{activity.name}</h2>
                 <p>{activity.description}</p>
+                <EditActivity activityId = {activity.id}/>
               </div>
             );
           })

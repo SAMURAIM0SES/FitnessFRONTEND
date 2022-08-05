@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import{Login,Register,NavBar,AllActivities,AddNewActivity,PublicRoutines,Routines,MyRoutines} from './'
-import { getActivities,getPublicRoutines} from "../api";
+import{Login,Register,NavBar,AllActivities,AddNewActivity,EditActivity, PublicRoutines,Routines,MyRoutines} from './'
+import { getActivities,getPublicRoutines,updateActivity} from "../api";
 
 
 
@@ -99,6 +99,18 @@ return (
         element= {
         
           <AddNewActivity
+          
+          name = {name}
+          description = {description}
+          setName = {setName}
+          setDescription = {setDescription}
+          />
+        }></Route>
+        <Route 
+        exact path ="/activities"
+        element= {
+        
+          <EditActivity
           
           name = {name}
           description = {description}
