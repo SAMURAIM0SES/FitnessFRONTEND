@@ -57,17 +57,7 @@ const EditActivity = ({ activityId}) => {
 </div>)
     
     
-    
-    
-    // return (
-    //   <div>
-    //    <form>
-    //     name
-    //     desc.....
-    //    </form>
-    //     <button id= {activityId} />
-    //   </div>
-    // );
+
   };
   
   export default EditActivity;

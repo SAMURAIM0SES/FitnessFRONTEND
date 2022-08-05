@@ -4,14 +4,14 @@ import { getPublicRoutines } from "../api";
 
 
 const PublicRoutines  = ( {routines} ) => {
-    console.log(routines, " look at line 6")
+
     return (
       <>
         <h1>Routines</h1>
  
         {routines && routines.length > 0 && (routines.isPublic = true)
           ? routines.map((routine) => {
-            // console.log(routine, " look at line 13")
+            
               return (
                 <div key={`routine holder${routine.id}`} className="Routines">
                   <h2>Routine: {routine.name}</h2>
@@ -20,7 +20,6 @@ const PublicRoutines  = ( {routines} ) => {
                   
                   {routine.activities && routine.activities.length > 0 ? 
                   routine.activities.map((activity)=>{
-                    console.log(activity, "RARARA")
                     return<>
                         
                      <p>Activity: {activity.name}</p>
