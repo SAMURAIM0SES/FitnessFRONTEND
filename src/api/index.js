@@ -101,8 +101,9 @@ export const loginUser = async (username, password) => {
   export async function getPublicRoutines() {
     try {
       const response = await fetch(`${apiURL}/Routines`);
+      
       const result = await response.json();
-      console.log(result, "should be routines");
+     
       return result;
     } catch (error) {
       console.log(error);
@@ -136,11 +137,13 @@ export const loginUser = async (username, password) => {
     console.error(error);
     }
 }
-     
+
   export async function getMyRoutines(username, token) {
     try {
-      console.log(username, token)
+      
+      
       const response = await fetch(`${apiURL}/users/${username}/routines`,
+      
       {
         method: "GET",
         headers: {
@@ -159,6 +162,35 @@ export const loginUser = async (username, password) => {
     }
   }
       
+
+
+
+  export const updateRoutine = async (creatorName, goal, token, routineId) => {
+    try{
+
+        const response = await fetch(`${apiURL}/routines/${routineId}`, 
+            {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    
+                    creatorName: creatorName,    
+                    goal: goal,
+                   
+                    
+                })
+            })    
+        const result = await response.json();
+        return result;
+    }
+
+    catch (error){   
+    console.error(error);
+    }
+}
     
   
 

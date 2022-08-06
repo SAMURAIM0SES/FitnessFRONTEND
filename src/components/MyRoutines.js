@@ -4,10 +4,12 @@ import { Route, Routes } from
 import {getPublicRoutines} from "../api"
 
 const MyRoutines= ({myRoutines}) =>{
-const routines = myRoutines
+    const routines = myRoutines
+    
     return (
         <>
-          <h1>Routines</h1>
+          <h1>My Routines</h1>
+          
    
           {routines && routines.length > 0 && (routines.isPublic = true)
             ? routines.map((routine) => {

@@ -10,8 +10,9 @@ import {
   PublicRoutines,
   Routines,
   MyRoutines,
+  EditRoutine
 } from "./";
-import { getActivities, getPublicRoutines, updateActivity, getMyRoutines } from "../api";
+import { getActivities, getPublicRoutines, updateActivity, getMyRoutines, updateRoutine } from "../api";
 
 
 const Home = () => {
@@ -144,13 +145,25 @@ const Home = () => {
             />
           }
         ></Route>
+         <Route
+          exact
+          path="/routines"
+          element={
+            <EditRoutine
+              name={name}
+              goal={goal}
+              setName={setName}
+              setGoal={setGoal}
+            />
+          }
+        ></Route>
         <Route
           exact
-          path="/myRoutines"
+          path="/MyRoutines"
           element={
             <MyRoutines
               myRoutines={myRoutines}
-              setRoutines={setRoutines}
+              setMyRoutines={setMyRoutines}
               activities={activities}
               setActivities={setActivities}
             />
