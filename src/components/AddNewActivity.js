@@ -22,7 +22,7 @@ const AddNewActivity = () => {
 
   return (
     <>
-      <div>Create New Activity</div>
+      <h2>Create New Activity</h2>
       <form onSubmit={handleSubmit}>
         <label>Name:</label>
         <input

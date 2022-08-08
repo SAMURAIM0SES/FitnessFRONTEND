@@ -98,3 +98,101 @@ export const loginUser = async (username, password) => {
   }catch(error){console.error(error)}
   }
   
+  export async function getPublicRoutines() {
+    try {
+      const response = await fetch(`${apiURL}/Routines`);
+      
+      const result = await response.json();
+     
+      return result;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+  export const updateActivity = async (name, description, token, id) => {
+    try{
+
+        const response = await fetch(`${apiURL}/Activities/${id}`, 
+            {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    
+                    name: name,    
+                    description: description,
+                   
+                    
+                })
+            })    
+        const result = await response.json();
+        return result;
+    }
+
+    catch (error){   
+    console.error(error);
+    }
+}
+
+  export async function getMyRoutines(username, token) {
+    try {
+      
+      
+      const response = await fetch(`${apiURL}/users/${username}/routines`,
+      
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        
+      },
+    
+    })
+      const result = await response.json();
+      console.log(result, "should be my routines");
+      return result;
+    } 
+    catch (error) {
+      console.log(error);
+    }
+  }
+      
+
+
+
+  export const updateRoutine = async (creatorName, goal, token, routineId) => {
+    try{
+
+        const response = await fetch(`${apiURL}/routines/${routineId}`, 
+            {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify({
+                    
+                    creatorName: creatorName,    
+                    goal: goal,
+                   
+                    
+                })
+            })    
+        const result = await response.json();
+        return result;
+    }
+
+    catch (error){   
+    console.error(error);
+    }
+}
+    
+  
+
+
+  
